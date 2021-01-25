@@ -2,12 +2,16 @@
   "name": "ci-projet-front",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build:prod": "ng build --prod",
+    "docker": "npm run docker:build && npm run docker:clean && npm run docker:start",
+    "docker:build": "docker build -t portfolio-tech-front .",
+    "docker:clean": "npm run docker:clean:container && npm run docker:clean:volume && npm run docker:clean:image",
+    "docker:clean:container": "docker container prune -f",
+    "docker:clean:image": "docker image prune -f",
+    "docker:clean:volume": "docker volume prune -f",
+    "docker:start": "docker run -d -e PORT=4200 -p 8765:4200 --name portfolio-tech-front portfolio-tech-front",
+    "start": "ng serve"
   },
   "private": true,
   "dependencies": {
