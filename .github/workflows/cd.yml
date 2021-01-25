@@ -2,13 +2,12 @@ name: CD
 on:
   push:
     branches:
-      - 'master'
+      - "master"
 
 jobs:
   tag:
     runs-on: ubuntu-latest
     env:
-      APP_VERSION: 0.1.0
       GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
       GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
     steps:
@@ -19,6 +18,21 @@ jobs:
           git config user.email "$GIT_USER_EMAIL"
           git config user.name "$GIT_USER_NAME"
       - name: Create tag
-        run: git tag -a "v$APP_VERSION-rc" -m "Release candidate v$APP_VERSION"
+        run: |
+          version=`sed -nE 's/^\s*"version": "(.*?)",$/\1/p' ./package.json`
+          git tag -a "v$version-rc" -m "Release candidate v$version"
       - name: Push tag to repository
         run: git push --tags origin
+  deploy-heroku:
+    needs: tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.6.8
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          usedocker: true
