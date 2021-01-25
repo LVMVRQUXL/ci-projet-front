@@ -1,0 +1,24 @@
+name: CD
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    env:
+      APP_VERSION: 0.1.0
+      GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+      GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set Git identity
+        run: |
+          git config user.email "$GIT_USER_EMAIL"
+          git config user.name "$GIT_USER_NAME"
+      - name: Create tag
+        run: git tag -a "v$APP_VERSION-rc" -m "Release candidate v$APP_VERSION"
+      - name: Push tag to repository
+        run: git push --tags origin

@@ -1,0 +1,21 @@
+name: CD Production
+on:
+  push:
+    branches:
+      - 'production'
+
+jobs:
+  draft-release:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v<VERSION>
+          release_name: Release v<VERSION>
+          draft: true
