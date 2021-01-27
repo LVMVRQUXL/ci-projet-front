@@ -10,4 +10,3 @@ labels: release
 ## Checklist
 
 - [ ] Upgrade application's version to `EMPTY`
-- [ ] Update changelog for this new release
