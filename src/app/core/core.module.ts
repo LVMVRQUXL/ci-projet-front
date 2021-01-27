@@ -1,4 +1,8 @@
 import { NgModule } from '@angular/core';
 
-@NgModule()
+import { NotificationService } from './services';
+
+@NgModule({
+  providers: [NotificationService]
+})
 export class CoreModule {}

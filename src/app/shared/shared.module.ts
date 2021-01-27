@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-@NgModule()
+@NgModule({
+  exports: [MatSnackBarModule]
+})
 export class SharedModule {}
