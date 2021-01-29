@@ -1,0 +1,41 @@
+<div *ngIf="authService.user$ | async; then authenticated else guest"></div>
+
+<ng-template #authenticated>
+  <div *ngIf="authService.user$ | async as user">
+    <mat-card>
+      <mat-card-title>👋 Salut 👋</mat-card-title>
+      <mat-card-content>
+        <br />
+        Tu viens de te connecter avec cette adresse email : <br />
+        <b>{{user.email}}</b>
+        <br />
+        Tu peux te déconnecter en cliquant sur le bouton ci-dessous. 👇
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="authService.signOut()">
+          Se déconnecter
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-template>
+
+<ng-template #guest>
+  <div>
+    <mat-card>
+      <mat-card-title>✋ STOP ✋</mat-card-title>
+      <mat-card-content>
+        Pour continuer, tu dois te connecter avec ton compte <b>Google</b> !
+        <br />
+        C'est nécessaire si tu veux que les fichiers que tu partageras ne se
+        perdent pas dans la nature. 🍂 <br />
+        Clique sur le bouton ci-dessous pour te connecter ! 👇
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="authService.signInWithGoogle()">
+          Se connecter
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-template>

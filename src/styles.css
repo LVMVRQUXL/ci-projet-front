@@ -1,3 +1,16 @@
+app-login {
+  align-items: center;
+  display: grid;
+  grid-template-rows: 10% 80% 10%;
+}
+
+app-login > div {
+  grid-row: 2;
+  text-align: -webkit-center;
+  height: 50%;
+  margin: 25%;
+}
+
 body {
   border: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
