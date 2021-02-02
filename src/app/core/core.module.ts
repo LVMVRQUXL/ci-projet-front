@@ -2,16 +2,31 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import firebase from 'firebase/app';
 
 import { environment } from '@environments/environment';
-import { AuthService, NotificationService } from './services';
+import {
+  AuthService,
+  NavigationService,
+  NotificationService,
+  UploadService
+} from './services';
+
+firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
-  providers: [AuthService, NotificationService]
+  providers: [
+    AuthService,
+    NavigationService,
+    NotificationService,
+    UploadService
+  ]
 })
 export class CoreModule {}

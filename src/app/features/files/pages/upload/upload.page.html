@@ -1,7 +1,7 @@
 <ngx-dropzone (change)="onSelect($event)">
   <ngx-dropzone-label>
     Glissez un ou plusieurs fichiers ici ou cliquez dans cette zone pour ajouter
-    manuellement vos fichiers à partager!
+    manuellement vos fichiers à partager !
   </ngx-dropzone-label>
   <ngx-dropzone-preview
     *ngFor="let file of files"
@@ -11,3 +11,4 @@
     <ngx-dropzone-label>{{ file.name }}</ngx-dropzone-label>
   </ngx-dropzone-preview>
 </ngx-dropzone>
+<button mat-raised-button (click)="upload()">Envoyer</button>

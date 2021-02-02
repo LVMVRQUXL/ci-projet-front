@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UploadService } from '@app/core/services';
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.page.html',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class UploadPage implements OnInit {
   files: File[] = [];
 
-  constructor() {}
+  constructor(private _uploadService: UploadService) {}
 
   ngOnInit(): void {}
 
@@ -20,5 +22,9 @@ export class UploadPage implements OnInit {
   onRemove(event) {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  upload() {
+    this.files.forEach((file: File): void => this._uploadService.upload(file));
   }
 }

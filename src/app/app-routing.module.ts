@@ -7,7 +7,7 @@ import { LoginModule } from './features/login/login.module';
 const routes: Routes = [
   { path: 'files', loadChildren: _loadFilesModule },
   { path: 'login', loadChildren: _loadLoginModule },
-  { path: '**', redirectTo: 'files', pathMatch: 'full' } // TODO: update redirections before merging
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 async function _loadFilesModule(): Promise<FilesModule> {
