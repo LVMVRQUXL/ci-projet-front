@@ -29,10 +29,12 @@ export class UploadPage implements OnInit {
 
   upload() {
     this.files.forEach((file: File): void => {
-      const fileName = `${Date.now()}_${file.name}`;
-      this._uploadService.upload(file, fileName, (downloadURL) => {
-        console.debug(`downloadURL = ${downloadURL}`);
-        this._notificationService.notify(`Partage terminé !`);
+      const currentDate: number = Date.now();
+      const fileName = `${currentDate}_${file.name}`;
+      this._uploadService.upload(file, fileName, () => {
+        this._uploadService
+          .saveFileRef(fileName, file.name, currentDate)
+          .then(() => this._notificationService.notify(`Partage terminé !`));
       });
     });
   }
