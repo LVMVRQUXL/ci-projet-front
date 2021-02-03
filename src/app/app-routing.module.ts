@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
+import {
+  AuthPipe,
+  canActivate,
+  redirectUnauthorizedTo
+} from '@angular/fire/auth-guard';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FilesModule } from './features/files/files.module';
 import { LoginModule } from './features/login/login.module';
 
 const routes: Routes = [
-  { path: 'files', loadChildren: _loadFilesModule },
+  {
+    path: 'files',
+    loadChildren: _loadFilesModule,
+    ...canActivate(_redirectUnauthorizedToLogin)
+  },
   { path: 'login', loadChildren: _loadLoginModule },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
@@ -16,6 +25,10 @@ async function _loadFilesModule(): Promise<FilesModule> {
 
 async function _loadLoginModule(): Promise<LoginModule> {
   return (await import('./features/login/login.module')).LoginModule;
+}
+
+function _redirectUnauthorizedToLogin(): AuthPipe {
+  return redirectUnauthorizedTo(['login']);
 }
 
 @NgModule({

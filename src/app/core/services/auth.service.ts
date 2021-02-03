@@ -13,7 +13,6 @@ import { User } from '@app/shared/models';
 
 @Injectable()
 export class AuthService {
-  currentUserId: string = 'guest';
   user$: Observable<User>;
 
   constructor(
@@ -39,7 +38,6 @@ export class AuthService {
     this.user$ = this._fireAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
-          this.currentUserId = user.uid;
           return this._firestore.doc<User>(`users/${user.uid}`).valueChanges();
         } else return of(null);
       })
@@ -50,7 +48,6 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<User> = this._firestore.doc(
       `users/${user.uid}`
     );
-    this.currentUserId = user.uid;
     const data = { uid: user.uid, email: user.email };
     return userRef.set(data, { merge: true });
   }
