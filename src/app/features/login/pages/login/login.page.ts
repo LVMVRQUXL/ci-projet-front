@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '@app/core/services';
+import { AuthService, NavigationService } from '@app/core/services';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,17 @@ import { AuthService } from '@app/core/services';
   styleUrls: ['./login.page.css']
 })
 export class LoginPage implements OnInit {
-  constructor(public authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    private _navigationService: NavigationService
+  ) {}
 
   ngOnInit(): void {}
+
+  goToUploadPage() {
+    console.debug('goToUploadPage()');
+    this._navigationService
+      .goToUploadPage()
+      .then((_) => window.location.reload());
+  }
 }

@@ -36,11 +36,11 @@ export class AuthService {
 
   private _observeAuthState() {
     this.user$ = this._fireAuth.authState.pipe(
-      switchMap((user) =>
-        user
-          ? this._firestore.doc<User>(`users/${user.uid}`).valueChanges()
-          : of(null)
-      )
+      switchMap((user) => {
+        if (user) {
+          return this._firestore.doc<User>(`users/${user.uid}`).valueChanges();
+        } else return of(null);
+      })
     );
   }
 

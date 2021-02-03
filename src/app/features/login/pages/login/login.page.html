@@ -9,12 +9,14 @@
         Tu viens de te connecter avec cette adresse email : <br />
         <b>{{user.email}}</b>
         <br />
-        Tu peux te déconnecter en cliquant sur le bouton ci-dessous. 👇
+        Clique sur le bouton ci-dessous qui correspond à ce que tu veux faire.
+        👇
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button (click)="authService.signOut()">
+        <button mat-stroked-button (click)="authService.signOut()">
           Se déconnecter
         </button>
+        <button mat-raised-button (click)="goToUploadPage()">Partager</button>
       </mat-card-actions>
     </mat-card>
   </div>
