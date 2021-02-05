@@ -31,12 +31,13 @@
         <br />
         C'est nécessaire si tu veux que les fichiers que tu partageras ne se
         perdent pas dans la nature. 🍂 <br />
-        Clique sur le bouton ci-dessous pour te connecter ! 👇
+        Clique sur les boutons ci-dessous pour te connecter ou télécharger un fichier ! 👇
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button (click)="authService.signInWithGoogle()">
           Se connecter
         </button>
+        <button mat-raised-button (click)="goToDownloadPage()">Télécharger</button>
       </mat-card-actions>
     </mat-card>
   </div>

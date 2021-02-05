@@ -5,6 +5,11 @@ import { Router } from '@angular/router';
 export class NavigationService {
   constructor(private _router: Router) {}
 
+  async goToDownloadPage(): Promise<boolean> {
+    await this._resetUrl();
+    return this._router.navigate(['download', 'download']);
+  }
+
   async goToUploadPage(): Promise<boolean> {
     await this._resetUrl();
     return this._router.navigate(['files', 'upload']);
