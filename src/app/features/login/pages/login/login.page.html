@@ -5,7 +5,6 @@
     <mat-card>
       <mat-card-title>👋 Salut 👋</mat-card-title>
       <mat-card-content>
-        <br />
         Tu viens de te connecter avec cette adresse email : <br />
         <b>{{user.email}}</b>
         <br />
@@ -31,13 +30,16 @@
         <br />
         C'est nécessaire si tu veux que les fichiers que tu partageras ne se
         perdent pas dans la nature. 🍂 <br />
-        Clique sur les boutons ci-dessous pour te connecter ou télécharger un fichier ! 👇
+        Clique sur les boutons ci-dessous pour te connecter ou télécharger un
+        fichier ! 👇
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button (click)="authService.signInWithGoogle()">
           Se connecter
         </button>
-        <button mat-raised-button (click)="goToDownloadPage()">Télécharger</button>
+        <button mat-raised-button (click)="goToDownloadPage()">
+          Télécharger
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

@@ -1,10 +1,12 @@
-app-login {
+app-login,
+app-download {
   align-items: center;
   display: grid;
   grid-template-rows: 10% 80% 10%;
 }
 
-app-login > div {
+app-login > div,
+app-download > div {
   grid-row: 2;
   text-align: -webkit-center;
   height: 50%;
