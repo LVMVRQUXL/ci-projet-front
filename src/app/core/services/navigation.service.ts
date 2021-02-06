@@ -7,7 +7,12 @@ export class NavigationService {
 
   async goToDownloadPage(): Promise<boolean> {
     await this._resetUrl();
-    return this._router.navigate(['download', 'download']);
+    return this._router.navigate(['download']);
+  }
+
+  async goToLoginPage(): Promise<boolean> {
+    await this._resetUrl();
+    return this._router.navigate(['login']);
   }
 
   async goToUploadPage(): Promise<boolean> {
@@ -16,6 +21,6 @@ export class NavigationService {
   }
 
   private _resetUrl(): Promise<boolean> {
-    return this._router.navigateByUrl('/', { skipLocationChange: true });
+    return this._router.navigateByUrl('/', { skipLocationChange: false });
   }
 }
