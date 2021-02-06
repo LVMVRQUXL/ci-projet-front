@@ -6,6 +6,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import {
   AuthService,
+  DashboardService,
   DownloadService,
   NavigationService,
   NotificationService,
@@ -21,6 +22,7 @@ import {
   ],
   providers: [
     AuthService,
+    DashboardService,
     DownloadService,
     NavigationService,
     NotificationService,

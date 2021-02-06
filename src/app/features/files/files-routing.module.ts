@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UploadPage } from './pages';
+import { DashboardPage, UploadPage } from './pages';
 
 const routes: Routes = [
+  { path: '', component: DashboardPage },
   { path: 'upload', component: UploadPage },
-  { path: '**', redirectTo: 'upload', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

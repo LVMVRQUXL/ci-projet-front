@@ -12,10 +12,20 @@
         👇
       </mat-card-content>
       <mat-card-actions>
-        <button mat-stroked-button (click)="authService.signOut()">
+        <button
+          mat-stroked-button
+          (click)="authService.signOut()"
+          style="margin-right: 8px"
+        >
           Se déconnecter
         </button>
+        <button mat-raised-button (click)="goToDashboardPage()">
+          Dashboard
+        </button>
         <button mat-raised-button (click)="goToUploadPage()">Partager</button>
+        <button mat-raised-button (click)="goToDownloadPage()">
+          Télécharger
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
