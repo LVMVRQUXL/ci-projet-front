@@ -4,10 +4,10 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { SharedModule } from '@app/shared/shared.module';
 import { FilesRoutingModule } from './files-routing.module';
-import { UploadPage } from './pages/upload/upload.page';
+import { DashboardPage, UploadPage } from './pages';
 
 @NgModule({
-  declarations: [UploadPage],
+  declarations: [DashboardPage, UploadPage],
   imports: [CommonModule, NgxDropzoneModule, SharedModule, FilesRoutingModule]
 })
 export class FilesModule {}

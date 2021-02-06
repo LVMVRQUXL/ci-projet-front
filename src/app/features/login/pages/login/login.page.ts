@@ -15,17 +15,21 @@ export class LoginPage implements OnInit {
 
   ngOnInit(): void {}
 
-  goToUploadPage() {
-    console.debug('goToUploadPage()');
+  goToDashboardPage() {
     this._navigationService
-      .goToUploadPage()
+      .goToDashboardPage()
       .then((_) => window.location.reload());
   }
 
   goToDownloadPage() {
-    console.debug('goToDownloadPage()');
     this._navigationService
-        .goToDownloadPage()
-        .then((_) => window.location.reload());
+      .goToDownloadPage()
+      .then((_) => window.location.reload());
+  }
+
+  goToUploadPage() {
+    this._navigationService
+      .goToUploadPage()
+      .then((_) => window.location.reload());
   }
 }
