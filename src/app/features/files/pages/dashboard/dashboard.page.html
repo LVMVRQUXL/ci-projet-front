@@ -3,7 +3,7 @@
     <h2>📁 Mes fichiers partagés 📁</h2>
   </div>
   <div class="actions">
-    <button mat-stroked-button>Retour</button>
+    <button mat-stroked-button (click)="goBack()">Retour</button>
   </div>
   <div class="files">
     <div *ngFor="let file of dashboardService.userFiles | async">
@@ -17,9 +17,11 @@
             mat-raised-button
             [cdkCopyToClipboard]="file.downloadURL"
             (click)="onCopyDownloadURL()"
+            style="margin-bottom: 8px"
           >
             Copier le lien de téléchargement
           </button>
+          <br />
           <button mat-stroked-button (click)="removeFile(file)">
             Supprimer
           </button>

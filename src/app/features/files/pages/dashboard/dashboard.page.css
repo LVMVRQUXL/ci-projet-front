@@ -1,0 +1,38 @@
+mat-card {
+  height: calc(100% - 32px);
+  align-items: center;
+  background-color: var(--color-peace);
+  color: var(--color-prestige-blue);
+}
+
+mat-card-content {
+  font-size: 16px;
+}
+
+mat-card-content > b {
+  font-size: 18px;
+}
+
+ngx-dropzone {
+  background-color: var(--color-city-lights);
+}
+
+.mat-raised-button {
+  background-color: var(--color-prestige-blue);
+  color: var(--color-anti-flash-white);
+}
+
+.wrapper {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 15% 5% auto;
+  align-items: center;
+  text-align: center;
+}
+
+.files {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  grid-column-gap: 4em;
+  grid-row-gap: 4em;
+}

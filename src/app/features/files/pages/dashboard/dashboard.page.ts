@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DashboardService, NotificationService } from '@app/core/services';
+import {
+  DashboardService,
+  NavigationService,
+  NotificationService
+} from '@app/core/services';
 import { FileModel } from '@app/shared/models';
 
 @Component({
@@ -11,20 +15,25 @@ import { FileModel } from '@app/shared/models';
 export class DashboardPage implements OnInit {
   constructor(
     public dashboardService: DashboardService,
+    private _navigationService: NavigationService,
     private _notificationService: NotificationService
   ) {}
 
-  ngOnInit(): void {
-    this.dashboardService.syncUserFiles();
+  goBack(): void {
+    this._navigationService.goToLoginPage();
   }
 
-  removeFile(file: FileModel): void {
-    this.dashboardService.removeFile(file);
+  ngOnInit(): void {
+    this.dashboardService.syncUserFiles();
   }
 
   onCopyDownloadURL(): void {
     this._notificationService.notify(
       'Lien de téléchargement copié dans le presse-papiers !'
     );
+  }
+
+  removeFile(file: FileModel): void {
+    this.dashboardService.removeFile(file);
   }
 }
