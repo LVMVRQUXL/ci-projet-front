@@ -31,9 +31,7 @@ export class DownloadService {
           xhr.send();
         })
         .catch((_) =>
-          this._notificationService.notify(
-            'Une erreur a eu lieu pendant le téléchargement du fichier !'
-          )
+          this._notificationService.notify("Le fichier n'existe pas !")
         );
     else this._notificationService.notify('Ce lien est invalide !');
   }

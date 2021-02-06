@@ -43,7 +43,13 @@ export class UploadPage implements OnInit {
       this._uploadService.upload(file, fileName, () => {
         this._uploadService
           .saveFileRef(fileName, file.name, currentDate)
-          .then(() => this._notificationService.notify(`Partage terminé !`));
+          .then(() => {
+            this._navigationService
+              .goToDashboardPage()
+              .then(() =>
+                this._notificationService.notify(`Partage terminé !`)
+              );
+          });
       });
     });
   }
