@@ -20,7 +20,9 @@
           >
             Copier le lien de téléchargement
           </button>
-          <button mat-stroked-button>Supprimer</button>
+          <button mat-stroked-button (click)="removeFile(file)">
+            Supprimer
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

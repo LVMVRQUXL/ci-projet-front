@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DashboardService, NotificationService } from '@app/core/services';
+import { FileModel } from '@app/shared/models';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,10 @@ export class DashboardPage implements OnInit {
 
   ngOnInit(): void {
     this.dashboardService.syncUserFiles();
+  }
+
+  removeFile(file: FileModel): void {
+    this.dashboardService.removeFile(file);
   }
 
   onCopyDownloadURL(): void {
