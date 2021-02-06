@@ -21,4 +21,11 @@ export class LoginPage implements OnInit {
       .goToUploadPage()
       .then((_) => window.location.reload());
   }
+
+  goToDownloadPage() {
+    console.debug('goToDownloadPage()');
+    this._navigationService
+        .goToDownloadPage()
+        .then((_) => window.location.reload());
+  }
 }

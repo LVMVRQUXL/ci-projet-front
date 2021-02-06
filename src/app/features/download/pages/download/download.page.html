@@ -1,0 +1,32 @@
+<div>
+  <mat-card>
+    <mat-card-title>👋 Salut l'ami ! 👋</mat-card-title>
+    <mat-card-content>
+      Si tu es actuellement en <b>mode invité</b>, c'est qu'on t'a donné un lien
+      de téléchargement, non ? 🧐 <br />
+      Tu peux coller le lien dans le champ ci-dessous. 👇 <br />
+      Ensuite, détends-toi et laisse-nous nous occuper du téléchargement du
+      fichier ! 😉
+    </mat-card-content>
+    <mat-card-actions>
+      <form (ngSubmit)="download(f)" #f="ngForm">
+        <mat-form-field style="width: 80%">
+          <input
+            matInput
+            type="text"
+            id="downloadUrl"
+            name="downloadUrl"
+            ngModel
+            required
+            placeholder="Insère le lien ici"
+          />
+        </mat-form-field>
+        <br />
+        <button mat-stroked-button (click)="goBack()">Retour</button>
+        <button mat-raised-button type="submit" [disabled]="f.invalid">
+          Télécharger
+        </button>
+      </form>
+    </mat-card-actions>
+  </mat-card>
+</div>
