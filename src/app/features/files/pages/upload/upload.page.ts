@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NotificationService, UploadService } from '@app/core/services';
+import {
+  NotificationService,
+  NavigationService,
+  UploadService
+} from '@app/core/services';
 
 @Component({
   selector: 'app-upload',
@@ -12,10 +16,15 @@ export class UploadPage implements OnInit {
 
   constructor(
     private _notificationService: NotificationService,
+    private _navigationService: NavigationService,
     private _uploadService: UploadService
   ) {}
 
   ngOnInit(): void {}
+
+  goBack(): void {
+    this._navigationService.goToLoginPage();
+  }
 
   onSelect(event) {
     console.debug(event);

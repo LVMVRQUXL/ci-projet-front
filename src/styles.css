@@ -1,16 +1,26 @@
 app-login,
-app-download {
+app-download,
+app-upload {
   align-items: center;
   display: grid;
   grid-template-rows: 10% 80% 10%;
 }
 
 app-login > div,
-app-download > div {
+app-download > div,
+app-upload > div {
   grid-row: 2;
   text-align: -webkit-center;
+}
+
+app-login > div,
+app-download > div {
   height: 50%;
   margin: 20% 25%;
+}
+
+app-upload > div {
+  height: 80%;
 }
 
 body {
