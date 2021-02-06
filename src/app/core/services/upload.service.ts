@@ -4,6 +4,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 
+import { FileModel } from '@app/shared/models';
+
 @Injectable()
 export class UploadService {
   constructor(
@@ -23,13 +25,15 @@ export class UploadService {
     this._auth.authState.subscribe(async (authState) => {
       if (authState !== null) {
         const userId: string = authState.uid;
-        console.debug(`userId = ${userId}`);
-        await this._database.object(`users/${userId}/files/${fileId}`).set({
+        const file: FileModel = {
           downloadURL,
           id: fileId,
           name: fileName,
           shortName: fileShortName
-        });
+        };
+        await this._database
+          .object(`users/${userId}/files/${fileId}`)
+          .set(file);
       }
     });
   }
