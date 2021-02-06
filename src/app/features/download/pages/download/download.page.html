@@ -1,15 +1,13 @@
 <div>
-    <form (ngSubmit)="download(f)" #f="ngForm">
-        <p>Vous êtes en mode "Invité"</p>
-        <p>Entrez le lien du fichier partagé pour télécharger le fichier</p>
-        <label for="downloadUrl">
-            Lien :
-            <input type="text" id="downloadUrl" name="downloadUrl" ngModel required >
-        </label>
-        <div class="error-message" *ngIf="unavailableUrl()">
-            Ce lien partagé n'existe pas.
-        </div>
-        <button mat-raised-button type="submit" [disabled]="f.invalid">Télécharger</button>
-    </form>
+  <form (ngSubmit)="download(f)" #f="ngForm">
+    <p>Vous êtes en mode "Invité"</p>
+    <p>Entrez le lien du fichier partagé pour télécharger le fichier</p>
+    <label for="downloadUrl">
+      Lien :
+      <input type="text" id="downloadUrl" name="downloadUrl" ngModel required />
+    </label>
+    <button mat-raised-button type="submit" [disabled]="f.invalid">
+      Télécharger
+    </button>
+  </form>
 </div>
-
