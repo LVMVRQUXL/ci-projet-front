@@ -14,7 +14,7 @@ export class DownloadPage implements OnInit {
   ngOnInit(): void {}
 
   download(form: NgForm) {
-    let fullUrl = form.value['downloadUrl'];
+    const fullUrl: string = form.value['downloadUrl'];
     this._downloadService.downloadFromURL(fullUrl);
   }
 }

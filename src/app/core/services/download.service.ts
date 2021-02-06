@@ -11,27 +11,34 @@ export class DownloadService {
     private _storage: AngularFireStorage
   ) {}
 
-  // TODO: An error should occurre when given link is invalid
   downloadFromURL(fileUrl: string) {
-    this._storage
-      .refFromURL(fileUrl)
-      .getDownloadURL()
-      .toPromise()
-      .then((url: string) => {
-        var xhr = new XMLHttpRequest();
-        xhr.responseType = 'blob';
-        xhr.onload = (_) => {
-          var blob = xhr.response;
-          saveAs(blob);
+    if (this._isValidUrl(fileUrl))
+      this._storage
+        .refFromURL(fileUrl)
+        .getDownloadURL()
+        .toPromise()
+        .then((url: string) => {
+          var xhr = new XMLHttpRequest();
+          xhr.responseType = 'blob';
+          xhr.onload = (_) => {
+            var blob = xhr.response;
+            saveAs(blob);
+            this._notificationService.notify(
+              'Le fichier a bien été téléchargé !'
+            );
+          };
+          xhr.open('GET', url);
+          xhr.send();
+        })
+        .catch((_) =>
           this._notificationService.notify(
-            'Le fichier a bien été téléchargé !'
-          );
-        };
-        xhr.open('GET', url);
-        xhr.send();
-      })
-      .catch((_) => {
-        this._notificationService.notify('Ce lien est invalide !');
-      });
+            'Une erreur a eu lieu pendant le téléchargement du fichier !'
+          )
+        );
+    else this._notificationService.notify('Ce lien est invalide !');
+  }
+
+  private _isValidUrl(url: string): boolean {
+    return url.startsWith('https://firebasestorage.googleapis.com/');
   }
 }
