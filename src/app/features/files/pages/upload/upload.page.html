@@ -1,0 +1,28 @@
+<div>
+  <mat-card>
+    <mat-card-title>📁 Partage de fichiers 📁</mat-card-title>
+    <mat-card-content>
+      Glisse un ou plusieurs fichiers à partager dans la zone ci-dessous. 👇
+      <br />
+      Tu peux aussi cliquer sur cette zone pour ajouter tes fichiers
+      manuellement. 😉 <br />
+      Ensuite, clique sur le bouton <b>Envoyer</b>. 😁<br />
+      Quand tout sera fait, tu seras redirigé sur ton dashboard pour gérer tes
+      fichiers partagés ! 👌 <br />
+      <br />
+      <ngx-dropzone (change)="onSelect($event)">
+        <ngx-dropzone-preview
+          *ngFor="let file of files"
+          [removable]="true"
+          (removed)="onRemove(file)"
+        >
+          <ngx-dropzone-label>{{ file.name }}</ngx-dropzone-label>
+        </ngx-dropzone-preview>
+      </ngx-dropzone>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button (click)="goBack()">Retour</button>
+      <button mat-raised-button (click)="upload()">Envoyer</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,22 @@
+mat-card {
+  height: calc(100% - 32px);
+  display: grid;
+  grid-template-rows: 20% 40% 40%;
+  align-items: center;
+  background-color: var(--color-peace);
+  color: var(--color-prestige-blue);
+  text-align: center;
+}
+
+mat-card-content {
+  font-size: 16px;
+}
+
+mat-card-content > b {
+  font-size: 18px;
+}
+
+.mat-raised-button {
+  background-color: var(--color-prestige-blue);
+  color: var(--color-anti-flash-white);
+}
